@@ -1,38 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import termcolors from "termcolors";
 import "./App.css";
 
 class App extends React.Component {
-  // const json = {
-  //   "0": "#073642",
-  //   "1": "#dc322f",
-  //   "2": "#859900",
-  //   "3": "#b58900",
-  //   "4": "#268bd2",
-  //   "5": "#d33682",
-  //   "6": "#2aa198",
-  //   "7": "#eee8d5",
-  //   "8": "#002b36",
-  //   "9": "#cb4b16",
-  //   "10": "#586e75",
-  //   "11": "#657b83",
-  //   "12": "#839496",
-  //   "13": "#6c71c4",
-  //   "14": "#93a1a1",
-  //   "15": "#fdf6e3",
-  //   background: "#002b36",
-  //   foreground: "#839496",
-  // };
-  // console.log("json: ", json);
-
-  // const colors = termcolors.json.import(JSON.stringify(json));
-  // console.log("colors: ", colors);
-
-  // const iterm = termcolors.iterm.export(colors);
-  // console.log("conversion from json to iterm", iterm);
-
   state = {
+    promptItems: [],
     fileURL: "",
     fileName: "",
     colors: {
@@ -81,9 +53,48 @@ class App extends React.Component {
     this.setState({ fileURL: fileURL, fileName: fileName });
   };
 
+  handleCheckbox = (e) => {
+    const target = e.target;
+    const promptItems = this.state.promptItems;
+
+    if (promptItems.some((item) => item.type === target.name)) {
+      this.removePromptItem(target.name);
+    } else {
+      this.addPromptItem(target.name);
+    }
+  };
+
+  removePromptItem = (type) => {
+    const promptItems = this.state.promptItems.filter((i) => i.type !== type);
+    this.setState({ promptItems });
+  };
+
+  addPromptItem = (type) => {
+    this.setState({
+      promptItems: this.state.promptItems.concat({ type }),
+    });
+  };
+
+  parsePromptItems = () => {
+    let prompt = "";
+    const promptItems = this.state.promptItems;
+    promptItems.forEach((item) => {
+      if (item.type === "username") {
+        prompt += "%n";
+      } else if (item.type === "date") {
+        prompt += "%W";
+      } else if (item.type === "time") {
+        prompt += "%T";
+      }
+    });
+
+    return `PROMPT="${prompt}"`;
+  };
+
   render() {
     return (
       <div className="App">
+        <h1>Create A Theme</h1>
         <form onChange={this.handleChange}>
           <label htmlFor="background">Background:</label>
           <input
@@ -172,6 +183,21 @@ class App extends React.Component {
             Download Theme
           </a>
         ) : null}
+        <h1>Create A Prompt</h1>
+        <form onClick={this.handleCheckbox}>
+          <label for="username">Username</label>
+          <input type="checkbox" name="username" />
+          <br />
+
+          <label for="date">Date</label>
+          <input type="checkbox" name="date" />
+          <br />
+
+          <label for="time">Time</label>
+          <input type="checkbox" name="time" />
+          <br />
+        </form>
+        <input type="text" name="prompt" value={this.parsePromptItems()} />
       </div>
     );
   }
