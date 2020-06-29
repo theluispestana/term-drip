@@ -1,4 +1,5 @@
 import React from "react";
+import * as promptHelper from "helpers/promptHelper";
 
 const Prompt = (props) => {
   return (
@@ -17,7 +18,11 @@ const Prompt = (props) => {
         <input type="checkbox" name="time" />
         <br />
       </form>
-      <input type="text" name="prompt" value={props.parsePromptItems()} />
+      <input
+        type="text"
+        name="prompt"
+        value={promptHelper.parsePromptItems(props.promptItems)}
+      />
     </div>
   );
 };

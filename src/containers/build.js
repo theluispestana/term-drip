@@ -56,22 +56,6 @@ class Build extends React.Component {
     });
   };
 
-  parsePromptItems = () => {
-    let prompt = "";
-    const promptItems = this.state.promptItems;
-    promptItems.forEach((item) => {
-      if (item.type === "username") {
-        prompt += "%n";
-      } else if (item.type === "date") {
-        prompt += "%W";
-      } else if (item.type === "time") {
-        prompt += "%T";
-      }
-    });
-
-    return `PROMPT="${prompt}"`;
-  };
-
   render() {
     return (
       <div>
@@ -83,7 +67,7 @@ class Build extends React.Component {
         />
         <Prompt
           handleCheckbox={this.handleCheckbox}
-          parsePromptItems={this.parsePromptItems}
+          promptItems={this.state.promptItems}
         />
       </div>
     );
