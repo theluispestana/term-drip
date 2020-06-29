@@ -1,13 +1,12 @@
 import React from "react";
 import Theme from "components/theme";
 import Prompt from "components/prompt";
+import Preview from "components/preview";
 
 class Build extends React.Component {
   state = {
     promptItems: [],
     colors: {
-      background: "",
-      foreground: "",
       0: "",
       1: "",
       2: "",
@@ -24,6 +23,8 @@ class Build extends React.Component {
       13: "",
       14: "",
       15: "",
+      background: "",
+      foreground: "",
     },
   };
 
@@ -69,6 +70,7 @@ class Build extends React.Component {
           handleCheckbox={this.handleCheckbox}
           promptItems={this.state.promptItems}
         />
+        <Preview />
       </div>
     );
   }

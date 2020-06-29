@@ -15,3 +15,25 @@ export const createFile = (themeObj) => {
   });
   return URL.createObjectURL(file);
 };
+
+// label colors
+export const colorLabels = [
+  "Background:",
+  "Foreground:",
+  "Black:",
+  "Red:",
+  "Green:",
+  "Yellow:",
+  "Blue:",
+  "Magenta:",
+  "Cyan:",
+  "White:",
+  "Bright-Black:",
+  "Bright-Red:",
+  "Bright-Green:",
+  "Bright-Yellow:",
+  "Bright-Blue:",
+  "Bright-Magenta:",
+  "Bright-Cyan:",
+  "Bright-White:",
+];
