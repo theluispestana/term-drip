@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+// import { useInputChange } from "helpers/useInputChange";
+import * as themeHelper from "helpers/themeHelper";
 
 const Theme = (props) => {
+  const [fileURL, setFileURL] = useState("");
+  const [fileName, setFileName] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const format = "iterm";
+    const iterm = themeHelper.createTheme(props.colors, format);
+
+    const URL = themeHelper.createFile(iterm);
+    const name = "this is the best theme of all time.itermcolors";
+
+    // this.setState({ fileURL: fileURL, fileName: fileName });
+    setFileURL(URL);
+    setFileName(name);
+  };
+
   return (
     <div>
       <h1>Create A Theme</h1>
@@ -85,10 +104,10 @@ const Theme = (props) => {
         <input type="text" name="15" value={props.colors[15]}></input>
         <br />
 
-        <button onClick={props.handleSubmit}>Create File</button>
+        <button onClick={handleSubmit}>Create File</button>
       </form>
-      {props.fileURL ? (
-        <a href={props.fileURL} download={props.fileName}>
+      {fileURL ? (
+        <a href={fileURL} download={fileName}>
           Download Theme
         </a>
       ) : null}

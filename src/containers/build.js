@@ -1,13 +1,10 @@
 import React from "react";
 import Theme from "components/theme";
 import Prompt from "components/prompt";
-import * as themeHelper from "helpers/themeHelper";
 
 class Build extends React.Component {
   state = {
     promptItems: [],
-    fileURL: "",
-    fileName: "",
     colors: {
       background: "",
       foreground: "",
@@ -35,18 +32,6 @@ class Build extends React.Component {
     this.setState({
       colors: { ...this.state.colors, [target.name]: target.value },
     });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    const format = "iterm";
-    const iterm = themeHelper.createTheme(this.state.colors, format);
-
-    const fileURL = themeHelper.createFile(iterm);
-    const fileName = "this is the best theme of all time.itermcolors";
-
-    this.setState({ fileURL: fileURL, fileName: fileName });
   };
 
   handleCheckbox = (e) => {
@@ -95,7 +80,6 @@ class Build extends React.Component {
           fileURL={this.state.fileURL}
           fileName={this.state.fileName}
           handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
         />
         <Prompt
           handleCheckbox={this.handleCheckbox}
