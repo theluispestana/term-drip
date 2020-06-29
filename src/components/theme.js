@@ -25,15 +25,14 @@ const Theme = (props) => {
     <div>
       <h1>Create A Theme</h1>
       <form onChange={props.handleChange}>
-        {Object.keys(props.colors).map((key, index) => {
-          return (
-            <ColorInput
-              name={key}
-              label={themeHelper.colorLabels[index]}
-              value={props.colors[key]}
-            />
-          );
-        })}
+        {Object.keys(props.colors).map((key, index) => (
+          <ColorInput
+            key={key}
+            name={key}
+            label={themeHelper.colorLabels[index]}
+            value={props.colors[key]}
+          />
+        ))}
         <button onClick={handleSubmit}>Create File</button>
       </form>
       {fileURL ? (

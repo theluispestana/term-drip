@@ -1,7 +1,7 @@
 import React from "react";
 import Theme from "components/theme";
 import Prompt from "components/prompt";
-import Preview from "components/preview";
+import Preview from "containers/preview";
 
 class Build extends React.Component {
   state = {
@@ -70,7 +70,10 @@ class Build extends React.Component {
           handleCheckbox={this.handleCheckbox}
           promptItems={this.state.promptItems}
         />
-        <Preview />
+        <Preview
+          colors={this.state.colors}
+          promptItems={this.state.promptItems}
+        />
       </div>
     );
   }

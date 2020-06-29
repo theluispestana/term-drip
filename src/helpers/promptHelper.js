@@ -1,3 +1,5 @@
+// import React from "react";
+
 // creates and return proper prompt for code preview
 export const parsePromptItems = (promptItems) => {
   let prompt = "";
@@ -13,6 +15,10 @@ export const parsePromptItems = (promptItems) => {
 
   return `PROMPT="${prompt}"`;
 };
+
+// export const createPromptPreview = (promptItems) => {
+
+// };
 
 // export const addPromptItem = (type) => {
 //   this.setState({
