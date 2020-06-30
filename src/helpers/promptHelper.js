@@ -20,23 +20,11 @@ export const createPromptPreview = (promptItems) => {
   let prompt = [];
   promptItems.forEach((item, index) => {
     if (item.type === "username") {
-      prompt.push(
-        <span style={{ color: "white" }} key={index}>
-          Username{" "}
-        </span>
-      );
+      prompt.push(<span key={index}>Username </span>);
     } else if (item.type === "date") {
-      prompt.push(
-        <span style={{ color: "white" }} key={index}>
-          06/30/20{" "}
-        </span>
-      );
+      prompt.push(<span key={index}>06/30/20 </span>);
     } else if (item.type === "time") {
-      prompt.push(
-        <span style={{ color: "white" }} key={index}>
-          06:20PM{" "}
-        </span>
-      );
+      prompt.push(<span key={index}>06:20PM </span>);
     }
   });
   return prompt;

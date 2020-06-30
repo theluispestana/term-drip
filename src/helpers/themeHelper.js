@@ -18,8 +18,6 @@ export const createFile = (themeObj) => {
 
 // label colors
 export const colorLabels = [
-  "Background:",
-  "Foreground:",
   "Black:",
   "Red:",
   "Green:",
@@ -36,4 +34,6 @@ export const colorLabels = [
   "Bright-Magenta:",
   "Bright-Cyan:",
   "Bright-White:",
+  "Background:",
+  "Foreground:",
 ];
