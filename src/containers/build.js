@@ -2,30 +2,49 @@ import React from "react";
 import Theme from "components/theme";
 import Prompt from "components/prompt";
 import Preview from "containers/preview";
+import { fetchTheme } from "helpers/requests";
 
 class Build extends React.Component {
   state = {
     promptItems: [],
     colors: {
-      background: "#272822",
-      foreground: "#F1EBEB",
-      0: "#48483E",
-      1: "#DC2566",
-      2: "#8FC029",
-      3: "#D4C96E",
-      4: "#55BCCE",
-      5: "#9358FE",
-      6: "#56B7A5",
-      7: "#ACADA1",
-      8: "#76715E",
-      9: "#FA2772",
-      10: "#A7E22E",
-      11: "#E7DB75",
-      12: "#66D9EE",
-      13: "#AE82FF",
-      14: "#66EFD5",
-      15: "#CFD0C2",
+      background: "",
+      foreground: "",
+      0: "",
+      1: "",
+      2: "",
+      3: "",
+      4: "",
+      5: "",
+      6: "",
+      7: "",
+      8: "",
+      9: "",
+      10: "",
+      11: "",
+      12: "",
+      13: "",
+      14: "",
+      15: "",
     },
+  };
+
+  componentDidMount() {
+    this.setTheme("1");
+  }
+
+  setTheme = (id) => {
+    fetchTheme(id).then((theme) => {
+      console.log("theme object from database: ", theme);
+      theme.colors.forEach((colorObj) =>
+        this.setState({
+          colors: {
+            ...this.state.colors,
+            [colorObj.color_type]: colorObj.color,
+          },
+        })
+      );
+    });
   };
 
   handleChange = (e) => {
