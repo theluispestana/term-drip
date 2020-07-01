@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import { useInputChange } from "helpers/useInputChange";
 import ColorInput from "components/colorInput";
 import * as themeHelper from "helpers/themeHelper";
+import { useInputChange } from "helpers/useInputChange";
 
 const Theme = (props) => {
   const [fileURL, setFileURL] = useState("");
-  const [fileName, setFileName] = useState("");
+  const [input, handleInputChange] = useInputChange();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,16 +14,22 @@ const Theme = (props) => {
     const iterm = themeHelper.createTheme(props.colors, format);
 
     const URL = themeHelper.createFile(iterm);
-    const name = "this is the best theme of all time.itermcolors";
 
-    // this.setState({ fileURL: fileURL, fileName: fileName });
     setFileURL(URL);
-    setFileName(name);
   };
 
   return (
     <div>
       <h1>Create A Theme</h1>
+
+      <label htmlFor="fileName">Name this theme: </label>
+      <input
+        type="text"
+        name="fileName"
+        value={input.fileName}
+        onChange={handleInputChange}
+      />
+
       <form onChange={props.handleChange}>
         {Object.keys(props.colors).map((key, index) => (
           <ColorInput
@@ -35,8 +41,9 @@ const Theme = (props) => {
         ))}
         <button onClick={handleSubmit}>Create File</button>
       </form>
+
       {fileURL ? (
-        <a href={fileURL} download={fileName}>
+        <a href={fileURL} download={`${input.fileName}.itermcolors`}>
           Download Theme
         </a>
       ) : null}
