@@ -95,7 +95,6 @@ class Build extends React.Component {
   };
 
   render() {
-    console.log("prompt items: ", this.state.promptItems);
     return (
       <div>
         <Theme
