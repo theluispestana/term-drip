@@ -1,6 +1,6 @@
 import React from "react";
 
-// creates and return proper prompt for code preview
+// creates and returns proper prompt for code preview
 export const parsePromptItems = (promptItems) => {
   let prompt = "";
   promptItems.forEach((item) => {
@@ -16,6 +16,7 @@ export const parsePromptItems = (promptItems) => {
   return `PROMPT="${prompt}"`;
 };
 
+// creates and returns a preview for selected prompt items
 export const createPromptPreview = (promptItems) => {
   let prompt = [];
   promptItems.forEach((item, index) => {
@@ -30,13 +31,11 @@ export const createPromptPreview = (promptItems) => {
   return prompt;
 };
 
-// export const addPromptItem = (type) => {
-//   this.setState({
-//     promptItems: this.state.promptItems.concat({ type }),
-//   });
-// };
-
-// export const removePromptItem = (type) => {
-//   const promptItems = this.state.promptItems.filter((i) => i.type !== type);
-//   this.setState({ promptItems });
-// };
+export const addOrRemovePromptItems = (itemArr, item) => {
+  if (itemArr.some((item) => item.type === item)) {
+    return itemArr.filter((i) => i.type === item);
+  } else {
+    itemArr.push({ type: item });
+    return itemArr;
+  }
+};

@@ -3,6 +3,7 @@ import Theme from "components/theme";
 import Prompt from "components/prompt";
 import Preview from "containers/preview";
 import { fetchTheme } from "helpers/requests";
+import { addOrRemovePromptItems } from "helpers/promptHelper";
 
 class Build extends React.Component {
   state = {
@@ -72,32 +73,19 @@ class Build extends React.Component {
   };
 
   handlePromptItems = (target) => {
-    const promptItems = this.state.promptItems;
-
-    if (promptItems.some((item) => item.type === target.name)) {
-      this.removePromptItem(target.name);
-    } else {
-      this.addPromptItem(target.name);
-    }
+    const promptItems = addOrRemovePromptItems(
+      this.state.promptItems,
+      target.name
+    );
+    this.setState({ promptItems });
   };
 
   handlePromptInputs = (e) => {
     const target = e.target;
     const [type, colorType] = target.name.split(" ");
-    const promptItems = [...this.state.promptItems];
+    const promptItems = [...this.promptItems];
     const index = promptItems.findIndex((item) => item.type === type);
     console.log("index of colors prompt item obj: ", index);
-  };
-
-  removePromptItem = (type) => {
-    const promptItems = this.state.promptItems.filter((i) => i.type !== type);
-    this.setState({ promptItems });
-  };
-
-  addPromptItem = (type) => {
-    this.setState({
-      promptItems: this.state.promptItems.concat({ type }),
-    });
   };
 
   render() {
