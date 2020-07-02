@@ -1,8 +1,8 @@
 import React from "react";
-import * as promptHelper from "helpers/promptHelper";
+import { createPromptPreview } from "helpers/promptHelper";
 
 const PromptPreview = (props) => {
-  const promptJSX = promptHelper.createPromptPreview(props.promptItems);
+  const promptJSX = createPromptPreview(props.promptItems);
   return (
     <div style={{ color: props.colors["foreground"] }}>
       {promptJSX.map((prompt) => prompt)}

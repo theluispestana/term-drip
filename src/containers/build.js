@@ -6,6 +6,11 @@ import { fetchTheme } from "helpers/requests";
 
 class Build extends React.Component {
   state = {
+    checkboxes: {
+      username: false,
+      date: false,
+      time: false,
+    },
     promptItems: [],
     colors: {
       background: "",
@@ -57,6 +62,16 @@ class Build extends React.Component {
 
   handleCheckbox = (e) => {
     const target = e.target;
+    const checkboxes = { ...this.state.checkboxes };
+
+    this.setState({
+      checkboxes: { ...checkboxes, [target.name]: !checkboxes[target.name] },
+    });
+
+    this.handlePromptItems(target);
+  };
+
+  handlePromptItems = (target) => {
     const promptItems = this.state.promptItems;
 
     if (promptItems.some((item) => item.type === target.name)) {
@@ -64,6 +79,14 @@ class Build extends React.Component {
     } else {
       this.addPromptItem(target.name);
     }
+  };
+
+  handlePromptInputs = (e) => {
+    const target = e.target;
+    const [type, colorType] = target.name.split(" ");
+    const promptItems = [...this.state.promptItems];
+    const index = promptItems.findIndex((item) => item.type === type);
+    console.log("index of colors prompt item obj: ", index);
   };
 
   removePromptItem = (type) => {
@@ -78,6 +101,7 @@ class Build extends React.Component {
   };
 
   render() {
+    console.log("prompt items: ", this.state.promptItems);
     return (
       <div>
         <Theme
@@ -87,8 +111,10 @@ class Build extends React.Component {
           handleChange={this.handleChange}
         />
         <Prompt
-          handleCheckbox={this.handleCheckbox}
+          checkboxes={this.state.checkboxes}
           promptItems={this.state.promptItems}
+          handleCheckbox={this.handleCheckbox}
+          handlePromptInputs={this.handlePromptInputs}
         />
         <Preview
           colors={this.state.colors}

@@ -1,14 +1,14 @@
 import React from "react";
 
-const ColorInput = (props) => {
+const Checkbox = (props) => {
   const { name, label, value } = props;
   return (
     <>
       <label htmlFor={name}>{label}</label>
-      <input type="color" name={name} value={value} />
+      <input type="checkbox" name={name} checked={value} />
       <br />
     </>
   );
 };
 
-export default ColorInput;
+export default Checkbox;

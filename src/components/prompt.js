@@ -1,28 +1,33 @@
 import React from "react";
-import * as promptHelper from "helpers/promptHelper";
+import { parsePromptItems } from "helpers/promptHelper";
+import PromptCheckbox from "containers/promptCheckbox";
 
 const Prompt = (props) => {
+  const { handleCheckbox, handlePromptInputs, promptItems, checkboxes } = props;
   return (
     <div>
       <h1>Create A Prompt</h1>
-      <form onClick={props.handleCheckbox}>
-        <label htmlFor="username">Username</label>
-        <input type="checkbox" name="username" />
-        <br />
-
-        <label htmlFor="date">Date</label>
-        <input type="checkbox" name="date" />
-        <br />
-
-        <label htmlFor="time">Time</label>
-        <input type="checkbox" name="time" />
-        <br />
+      <form onClick={handleCheckbox}>
+        <PromptCheckbox
+          name="username"
+          label="Username "
+          value={checkboxes.username}
+          handlePromptInputs={handlePromptInputs}
+        />
+        <PromptCheckbox
+          name="date"
+          label="Date "
+          value={checkboxes.date}
+          handlePromptInputs={handlePromptInputs}
+        />
+        <PromptCheckbox
+          name="time"
+          label="Time "
+          value={checkboxes.time}
+          handlePromptInputs={handlePromptInputs}
+        />
       </form>
-      <input
-        type="text"
-        name="prompt"
-        value={promptHelper.parsePromptItems(props.promptItems)}
-      />
+      <input type="text" name="prompt" value={parsePromptItems(promptItems)} />
     </div>
   );
 };
