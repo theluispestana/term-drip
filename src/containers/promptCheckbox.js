@@ -20,9 +20,17 @@ const PromptCheckbox = (props) => {
         handlePromptInputs={handlePromptInputs}
       />
       {checkboxValue ? (
-        <div onChange={handlePromptInputs}>
-          <ColorInput name={`${name} foreground`} label="Foreground Color: " />
-          <ColorInput name={`${name} background`} label="Background Color: " />
+        <div>
+          <ColorInput
+            name={`${name} foreground`}
+            label="Foreground Color: "
+            handleChange={handlePromptInputs}
+          />
+          <ColorInput
+            name={`${name} background`}
+            label="Background Color: "
+            handleChange={handlePromptInputs}
+          />
         </div>
       ) : null}
     </>

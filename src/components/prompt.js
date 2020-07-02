@@ -30,7 +30,12 @@ const Prompt = (props) => {
           handlePromptInputs={handlePromptInputs}
         />
       </form>
-      <input type="text" name="prompt" value={parsePromptItems(promptItems)} />
+      <input
+        type="text"
+        name="prompt"
+        readOnly
+        value={parsePromptItems(promptItems)}
+      />
     </div>
   );
 };

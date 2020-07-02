@@ -9,15 +9,13 @@ const Theme = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const format = "iterm";
     const iterm = themeHelper.createTheme(props.colors, format);
-
     const URL = themeHelper.createFile(iterm);
-
     setFileURL(URL);
   };
 
+  const { colors, handleChange } = props;
   return (
     <div>
       <h1>Create A Theme</h1>
@@ -30,13 +28,14 @@ const Theme = (props) => {
         onChange={handleInputChange}
       />
 
-      <form onChange={props.handleChange}>
-        {Object.keys(props.colors).map((key, index) => (
+      <form>
+        {Object.keys(colors).map((key, index) => (
           <ColorInput
             key={key}
             name={key}
             label={themeHelper.colorLabels[index]}
-            value={props.colors[key]}
+            handleChange={handleChange}
+            value={colors[key]}
           />
         ))}
         <button onClick={handleSubmit}>Create File</button>
