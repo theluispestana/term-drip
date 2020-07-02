@@ -81,11 +81,17 @@ class Build extends React.Component {
   };
 
   handlePromptInputs = (e) => {
-    const target = e.target;
-    const [type, colorType] = target.name.split(" ");
-    const promptItems = [...this.promptItems];
+    const colorInput = e.target;
+    const [type, colorType] = colorInput.name.split(" ");
+    let promptItems = [...this.state.promptItems];
     const index = promptItems.findIndex((item) => item.type === type);
+    promptItems[index] = {
+      ...promptItems[index],
+      [colorType]: colorInput.value,
+    };
+    this.setState({ promptItems });
     console.log("index of colors prompt item obj: ", index);
+    console.log("promptItems after color change: ", promptItems);
   };
 
   render() {

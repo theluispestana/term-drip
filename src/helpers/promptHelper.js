@@ -32,8 +32,8 @@ export const createPromptPreview = (promptItems) => {
 };
 
 export const addOrRemovePromptItems = (itemArr, item) => {
-  if (itemArr.some((item) => item.type === item)) {
-    return itemArr.filter((i) => i.type === item);
+  if (itemArr.some((i) => i.type === item)) {
+    return itemArr.filter((i) => i.type !== item);
   } else {
     itemArr.push({ type: item });
     return itemArr;

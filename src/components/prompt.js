@@ -11,19 +11,19 @@ const Prompt = (props) => {
         <PromptCheckbox
           name="username"
           label="Username "
-          value={checkboxes.username}
+          checkboxValue={checkboxes.username}
           handlePromptInputs={handlePromptInputs}
         />
         <PromptCheckbox
           name="date"
           label="Date "
-          value={checkboxes.date}
+          checkboxValue={checkboxes.date}
           handlePromptInputs={handlePromptInputs}
         />
         <PromptCheckbox
           name="time"
           label="Time "
-          value={checkboxes.time}
+          checkboxValue={checkboxes.time}
           handlePromptInputs={handlePromptInputs}
         />
       </form>
