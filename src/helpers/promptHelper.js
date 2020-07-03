@@ -1,5 +1,3 @@
-import React from "react";
-
 // creates and returns proper prompt for code preview
 export const parsePromptItems = (promptItems) => {
   let prompt = "";
@@ -19,13 +17,22 @@ export const parsePromptItems = (promptItems) => {
 // creates and returns a preview for selected prompt items
 export const createPromptPreview = (promptItems) => {
   let prompt = [];
-  promptItems.forEach((item, index) => {
+  promptItems.forEach((item) => {
     if (item.type === "username") {
-      prompt.push(<span key={index}>Username </span>);
+      prompt.push({
+        style: { color: item.foreground, backgroundColor: item.background },
+        text: "Username ",
+      });
     } else if (item.type === "date") {
-      prompt.push(<span key={index}>06/30/20 </span>);
+      prompt.push({
+        style: { color: item.foreground, backgroundColor: item.background },
+        text: "06/30/20 ",
+      });
     } else if (item.type === "time") {
-      prompt.push(<span key={index}>06:20PM </span>);
+      prompt.push({
+        style: { color: item.foreground, backgroundColor: item.background },
+        text: "06:20PM",
+      });
     }
   });
   return prompt;

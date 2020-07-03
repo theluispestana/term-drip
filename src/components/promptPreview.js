@@ -2,10 +2,14 @@ import React from "react";
 import { createPromptPreview } from "helpers/promptHelper";
 
 const PromptPreview = (props) => {
-  const promptJSX = createPromptPreview(props.promptItems);
+  const promptArr = createPromptPreview(props.promptItems);
   return (
     <div style={{ color: props.colors["foreground"] }}>
-      {promptJSX.map((prompt) => prompt)}
+      {promptArr.map((prompt, index) => (
+        <span key={index} style={prompt.style}>
+          {prompt.text}
+        </span>
+      ))}
       <span>_</span>
     </div>
   );
