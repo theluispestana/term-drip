@@ -3,7 +3,11 @@ import Theme from "components/theme";
 import Prompt from "components/prompt";
 import Preview from "containers/preview";
 import { fetchTheme } from "helpers/requests";
-import { addOrRemovePromptItems } from "helpers/promptHelper";
+import {
+  addOrRemovePromptItems,
+  createPromptItemArr,
+  setCheckboxes,
+} from "helpers/promptHelper";
 
 class Build extends React.Component {
   state = {
@@ -43,7 +47,7 @@ class Build extends React.Component {
   setTheme = (id) => {
     fetchTheme(id).then((theme) => {
       console.log("theme object from database: ", theme);
-      theme.colors.forEach((colorObj) =>
+      theme.terminal_colorscheme.colors.forEach((colorObj) =>
         this.setState({
           colors: {
             ...this.state.colors,
@@ -51,6 +55,10 @@ class Build extends React.Component {
           },
         })
       );
+      this.setState({
+        promptItems: createPromptItemArr(theme.prompt_items),
+        checkboxes: setCheckboxes(theme.prompt_items),
+      });
     });
   };
 
