@@ -5,10 +5,9 @@ import "styles/preview.css";
 
 const Preview = (props) => {
   const { colors, promptItems } = props;
-  // console.log("color keys: ", Object.keys(colors));
   return (
     <div>
-      <h1>Preview</h1>
+      <p>Preview</p>
       <div
         className="preview"
         style={{ backgroundColor: colors["background"] }}

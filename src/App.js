@@ -8,11 +8,13 @@ import {
 import Build from "containers/build";
 import Browse from "components/browse";
 import Welcome from "containers/welcome";
+import NavBar from "components/navBar";
 
 class App extends React.Component {
   render() {
     return (
       <Router>
+        <NavBar />
         <Switch>
           <Route exact path="/" component={Welcome} />
           <Route path="/browse" component={Browse} />

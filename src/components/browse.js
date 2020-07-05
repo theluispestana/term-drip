@@ -24,12 +24,14 @@ class Browse extends React.Component {
       <div>
         {this.state.themes.map((theme) => (
           <>
+            <Link to={`/build/${theme.theme.id}`}>
+              <h1>{theme.theme.name}</h1>
+            </Link>
             <Preview
               key={theme.theme.id}
               colors={createColorObj(theme.terminal_colorscheme.colors)}
               promptItems={createPromptItemArr(theme.prompt_items)}
             />
-            <Link to={`/build/${theme.theme.id}`}>See Theme</Link>
           </>
         ))}
       </div>
