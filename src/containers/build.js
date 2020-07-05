@@ -112,6 +112,11 @@ class Build extends React.Component {
     this.setState({ fileURL });
   };
 
+  handleBoolean = (e) => {
+    const target = e.target;
+    this.setState({ [target.name]: !this.state[target.name] });
+  };
+
   render() {
     const {
       colors,
@@ -124,19 +129,24 @@ class Build extends React.Component {
     return (
       <div id="build-container">
         <div id="tools">
-          <Theme
-            colors={colors}
-            fileURL={fileURL}
-            fileName={fileName}
-            handleChange={this.handleColorChange}
-          />
-          <Prompt
-            checkboxes={checkboxes}
-            promptItems={promptItems}
-            handleCheckbox={this.handleCheckbox}
-            handlePromptInputs={this.handlePromptInputs}
-          />
-          <button></button>
+          {renderThemeInputs ? (
+            <Theme
+              colors={colors}
+              fileURL={fileURL}
+              fileName={fileName}
+              handleChange={this.handleColorChange}
+            />
+          ) : (
+            <Prompt
+              checkboxes={checkboxes}
+              promptItems={promptItems}
+              handleCheckbox={this.handleCheckbox}
+              handlePromptInputs={this.handlePromptInputs}
+            />
+          )}
+          <button name="renderThemeInputs" onClick={this.handleBoolean}>
+            {renderThemeInputs ? "Show Prompt Tools" : "Show Terminal Tools"}
+          </button>
         </div>
         <div id="preview">
           <ThemeInfo
