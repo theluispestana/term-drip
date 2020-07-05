@@ -38,7 +38,7 @@ export const createPromptPreview = (promptItems) => {
     } else if (item.type === "time") {
       prompt.push({
         style: { color: item.foreground, backgroundColor: item.background },
-        text: "06:20PM",
+        text: "06:20PM ",
       });
     }
   });

@@ -15,6 +15,7 @@ import { parsePromptItems } from "helpers/promptHelper";
 
 class Build extends React.Component {
   state = {
+    renderThemeInputs: true,
     checkboxes: {
       username: false,
       date: false,
@@ -112,29 +113,38 @@ class Build extends React.Component {
   };
 
   render() {
+    const {
+      colors,
+      fileURL,
+      fileName,
+      checkboxes,
+      promptItems,
+      renderThemeInputs,
+    } = this.state;
     return (
       <div id="build-container">
         <div id="tools">
           <Theme
-            colors={this.state.colors}
-            fileURL={this.state.fileURL}
-            fileName={this.state.fileName}
+            colors={colors}
+            fileURL={fileURL}
+            fileName={fileName}
             handleChange={this.handleColorChange}
           />
           <Prompt
-            checkboxes={this.state.checkboxes}
-            promptItems={this.state.promptItems}
+            checkboxes={checkboxes}
+            promptItems={promptItems}
             handleCheckbox={this.handleCheckbox}
             handlePromptInputs={this.handlePromptInputs}
           />
+          <button></button>
         </div>
         <div id="preview">
           <ThemeInfo
-            fileName={this.state.fileName}
-            fileURL={this.state.fileURL}
-            colors={this.state.colors}
-            promptItems={this.state.promptItems}
-            promptCode={parsePromptItems(this.state.promptItems)}
+            fileName={fileName}
+            fileURL={fileURL}
+            colors={colors}
+            promptItems={promptItems}
+            promptCode={parsePromptItems(promptItems)}
             handleInputChange={this.handleInputChange}
             handleSubmit={this.handleSubmit}
           />
