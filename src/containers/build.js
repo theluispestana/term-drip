@@ -2,6 +2,7 @@ import React from "react";
 import Theme from "components/theme";
 import Prompt from "components/prompt";
 import Preview from "containers/preview";
+import "styles/build.css";
 import { fetchTheme } from "helpers/requests";
 import {
   addOrRemovePromptItems,
@@ -104,23 +105,27 @@ class Build extends React.Component {
 
   render() {
     return (
-      <div>
-        <Theme
-          colors={this.state.colors}
-          fileURL={this.state.fileURL}
-          fileName={this.state.fileName}
-          handleChange={this.handleChange}
-        />
-        <Prompt
-          checkboxes={this.state.checkboxes}
-          promptItems={this.state.promptItems}
-          handleCheckbox={this.handleCheckbox}
-          handlePromptInputs={this.handlePromptInputs}
-        />
-        <Preview
-          colors={this.state.colors}
-          promptItems={this.state.promptItems}
-        />
+      <div id="build-container">
+        <div id="tools">
+          <Theme
+            colors={this.state.colors}
+            fileURL={this.state.fileURL}
+            fileName={this.state.fileName}
+            handleChange={this.handleChange}
+          />
+          <Prompt
+            checkboxes={this.state.checkboxes}
+            promptItems={this.state.promptItems}
+            handleCheckbox={this.handleCheckbox}
+            handlePromptInputs={this.handlePromptInputs}
+          />
+        </div>
+        <div id="preview">
+          <Preview
+            colors={this.state.colors}
+            promptItems={this.state.promptItems}
+          />
+        </div>
       </div>
     );
   }
