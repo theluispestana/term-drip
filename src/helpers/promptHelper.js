@@ -78,3 +78,14 @@ export const setCheckboxes = (items) => {
   items.forEach((item) => (checkboxObj[item.type] = true));
   return checkboxObj;
 };
+
+export const addPromptColors = (colorInput, promptItems) => {
+  const [type, colorType] = colorInput.name.split(" ");
+  const index = promptItems.findIndex((item) => item.type === type);
+  promptItems[index] = {
+    ...promptItems[index],
+    [colorType]: colorInput.value,
+  };
+
+  return promptItems;
+};

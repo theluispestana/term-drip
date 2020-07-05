@@ -1,9 +1,8 @@
 import React from "react";
-import { parsePromptItems } from "helpers/promptHelper";
 import PromptCheckbox from "containers/promptCheckbox";
 
 const Prompt = (props) => {
-  const { handleCheckbox, handlePromptInputs, promptItems, checkboxes } = props;
+  const { handleCheckbox, handlePromptInputs, checkboxes } = props;
   return (
     <div>
       <h1>Create A Prompt</h1>
@@ -30,12 +29,6 @@ const Prompt = (props) => {
           handlePromptInputs={handlePromptInputs}
         />
       </form>
-      <input
-        type="text"
-        name="prompt"
-        readOnly
-        value={parsePromptItems(promptItems)}
-      />
     </div>
   );
 };

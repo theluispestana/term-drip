@@ -1,14 +1,17 @@
 import React from "react";
 import Theme from "components/theme";
 import Prompt from "components/prompt";
-import Preview from "containers/preview";
 import "styles/build.css";
 import { fetchTheme } from "helpers/requests";
 import {
   addOrRemovePromptItems,
   createPromptItemArr,
   setCheckboxes,
+  addPromptColors,
 } from "helpers/promptHelper";
+import ThemeInfo from "components/themeInfo";
+import { createThemeAndFile } from "helpers/themeHelper";
+import { parsePromptItems } from "helpers/promptHelper";
 
 class Build extends React.Component {
   state = {
@@ -63,7 +66,12 @@ class Build extends React.Component {
     });
   };
 
-  handleChange = (e) => {
+  handleInputChange = (e) => {
+    const target = e.target;
+    this.setState({ [target.name]: target.value });
+  };
+
+  handleColorChange = (e) => {
     const target = e.target;
     this.setState({
       colors: { ...this.state.colors, [target.name]: target.value },
@@ -90,17 +98,17 @@ class Build extends React.Component {
   };
 
   handlePromptInputs = (e) => {
-    const colorInput = e.target;
-    const [type, colorType] = colorInput.name.split(" ");
-    let promptItems = [...this.state.promptItems];
-    const index = promptItems.findIndex((item) => item.type === type);
-    promptItems[index] = {
-      ...promptItems[index],
-      [colorType]: colorInput.value,
-    };
+    const promptItems = addPromptColors(e.target, [...this.state.promptItems]);
     this.setState({ promptItems });
-    console.log("index of colors prompt item obj: ", index);
-    console.log("promptItems after color change: ", promptItems);
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const format = "iterm";
+    // const iterm = themeHelper.createTheme(props.colors, format);
+    // const URL = themeHelper.createFile(iterm);
+    const fileURL = createThemeAndFile(this.state.colors, format);
+    this.setState({ fileURL });
   };
 
   render() {
@@ -111,7 +119,7 @@ class Build extends React.Component {
             colors={this.state.colors}
             fileURL={this.state.fileURL}
             fileName={this.state.fileName}
-            handleChange={this.handleChange}
+            handleChange={this.handleColorChange}
           />
           <Prompt
             checkboxes={this.state.checkboxes}
@@ -121,9 +129,14 @@ class Build extends React.Component {
           />
         </div>
         <div id="preview">
-          <Preview
+          <ThemeInfo
+            fileName={this.state.fileName}
+            fileURL={this.state.fileURL}
             colors={this.state.colors}
             promptItems={this.state.promptItems}
+            promptCode={parsePromptItems(this.state.promptItems)}
+            handleInputChange={this.handleInputChange}
+            handleSubmit={this.handleSubmit}
           />
         </div>
       </div>
