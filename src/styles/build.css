@@ -1,4 +1,14 @@
+html, body {
+  height: 100%;
+}
+
+#root {
+  height: 80%;
+}
+
 #build-container {
+  height: 100%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
