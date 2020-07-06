@@ -1,5 +1,5 @@
-import React from 'react';
-import Preview from 'containers/preview';
+import React from "react";
+import Preview from "containers/preview";
 
 const ThemeInfo = (props) => {
   const {
@@ -12,6 +12,8 @@ const ThemeInfo = (props) => {
     promptCode,
   } = props;
 
+  const handleSave = () => {};
+
   return (
     <div>
       <label htmlFor="fileName">Name this theme: </label>
@@ -21,11 +23,9 @@ const ThemeInfo = (props) => {
         value={fileName}
         onChange={handleInputChange}
       />
+      <button onClick={handleSave}>Save Theme</button>
       <br />
-      <Preview
-        colors={colors}
-        promptItems={promptItems}
-      />
+      <Preview colors={colors} promptItems={promptItems} />
       <label htmlFor="prompt">Add this to your ZSH file: </label>
       <input type="text" name="prompt" readOnly value={promptCode} />
       <br />

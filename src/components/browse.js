@@ -1,10 +1,10 @@
 import React from "react";
+import Preview from "containers/preview";
+import "styles/browse.css";
 import { fetchThemes } from "helpers/requests";
 import { createColorObj } from "helpers/themeHelper";
-import Preview from "containers/preview";
 import { Link } from "react-router-dom";
 import { createPromptItemArr } from "helpers/promptHelper";
-// import { Link } from "react-router-dom";
 
 class Browse extends React.Component {
   state = {
@@ -16,14 +16,10 @@ class Browse extends React.Component {
   }
 
   render() {
-    // console.log("browse themes: ", this.state.themes);
-    // this.state.themes.forEach((theme) =>
-    //   console.log(createColorObj(theme.colors))
-    // );
     return (
-      <div>
+      <div id="browse">
         {this.state.themes.map((theme) => (
-          <>
+          <div id="preview-container">
             <Link to={`/build/${theme.theme.id}`}>
               <h1>{theme.theme.name}</h1>
             </Link>
@@ -32,7 +28,7 @@ class Browse extends React.Component {
               colors={createColorObj(theme.terminal_colorscheme.colors)}
               promptItems={createPromptItemArr(theme.prompt_items)}
             />
-          </>
+          </div>
         ))}
       </div>
     );

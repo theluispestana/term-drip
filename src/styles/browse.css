@@ -1,0 +1,11 @@
+#browse {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#preview-container {
+  margin: 10px;
+}
