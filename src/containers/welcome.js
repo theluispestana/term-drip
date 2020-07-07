@@ -5,6 +5,7 @@ import { useInputChange } from "helpers/useInputChange";
 import { loginUser, postUser } from "helpers/requests";
 import { useHistory } from "react-router-dom";
 import SignUp from "components/signup";
+import SiteInfo from "components/siteInfo";
 
 const Welcome = () => {
   const [input, handleInputChange] = useInputChange();
@@ -40,9 +41,7 @@ const Welcome = () => {
 
   return (
     <div id="welcome-container">
-      <div id="information">
-        <p>Information about the site</p>
-      </div>
+      <SiteInfo />
       <div id="login">
         <Login
           username={input.username}

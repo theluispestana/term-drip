@@ -72,10 +72,9 @@ class Build extends React.Component {
     this.setState({ [target.name]: target.value });
   };
 
-  handleColorChange = (e) => {
-    const target = e.target;
+  handleColorChange = (color, name) => {
     this.setState({
-      colors: { ...this.state.colors, [target.name]: target.value },
+      colors: { ...this.state.colors, [name]: color.hex },
     });
   };
 
@@ -98,8 +97,12 @@ class Build extends React.Component {
     this.setState({ promptItems });
   };
 
-  handlePromptInputs = (e) => {
-    const promptItems = addPromptColors(e.target, [...this.state.promptItems]);
+  handlePromptInputs = (color, name) => {
+    // console.log("name:", name);
+    // console.log("color:", color);
+    const promptItems = addPromptColors({ name: name, value: color.hex }, [
+      ...this.state.promptItems,
+    ]);
     this.setState({ promptItems });
   };
 

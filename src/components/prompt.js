@@ -2,7 +2,7 @@ import React from "react";
 import PromptCheckbox from "containers/promptCheckbox";
 
 const Prompt = (props) => {
-  const { handleCheckbox, handlePromptInputs, checkboxes } = props;
+  const { handleCheckbox, handlePromptInputs, checkboxes, promptItems } = props;
   return (
     <div>
       <h1>Create A Prompt</h1>
@@ -10,6 +10,7 @@ const Prompt = (props) => {
         <PromptCheckbox
           name="username"
           label="Username "
+          promptItems={promptItems}
           handleCheckbox={handleCheckbox}
           checkboxValue={checkboxes.username}
           handlePromptInputs={handlePromptInputs}
@@ -17,6 +18,7 @@ const Prompt = (props) => {
         <PromptCheckbox
           name="date"
           label="Date "
+          promptItems={promptItems}
           handleCheckbox={handleCheckbox}
           checkboxValue={checkboxes.date}
           handlePromptInputs={handlePromptInputs}
@@ -24,6 +26,7 @@ const Prompt = (props) => {
         <PromptCheckbox
           name="time"
           label="Time "
+          promptItems={promptItems}
           handleCheckbox={handleCheckbox}
           checkboxValue={checkboxes.time}
           handlePromptInputs={handlePromptInputs}

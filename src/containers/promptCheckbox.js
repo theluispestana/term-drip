@@ -6,10 +6,12 @@ const PromptCheckbox = (props) => {
   const {
     name,
     label,
+    promptItems,
     checkboxValue,
     handlePromptInputs,
     handleCheckbox,
   } = props;
+  const promptItem = promptItems.slice(-1)[0];
   return (
     <>
       <Checkbox
@@ -24,11 +26,13 @@ const PromptCheckbox = (props) => {
           <ColorInput
             name={`${name} foreground`}
             label="Foreground Color: "
+            value={promptItem.foreground}
             handleChange={handlePromptInputs}
           />
           <ColorInput
             name={`${name} background`}
             label="Background Color: "
+            value={promptItem.background}
             handleChange={handlePromptInputs}
           />
         </div>
