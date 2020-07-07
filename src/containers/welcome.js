@@ -1,21 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from "components/login";
 import "styles/welcome.css";
 import { useInputChange } from "helpers/useInputChange";
-import { loginUser } from "helpers/requests";
+import { loginUser, postUser } from "helpers/requests";
+import { useHistory } from "react-router-dom";
+import SignUp from "components/signup";
 
 const Welcome = () => {
   const [input, handleInputChange] = useInputChange();
+  const history = useHistory();
+  const [loginErr, setLoginErr] = useState("");
+  const [signUpErr, setSignUpErr] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    loginUser(input.username, input.password).then((json) =>
-      localStorage.setItem("token", json.jwt)
-    );
+    loginUser(input.username, input.password)
+      .then((json) => {
+        localStorage.setItem("token", json.jwt);
+        history.push("/build");
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoginErr("username or password is incorrect");
+      });
   };
 
   const handleSignUp = (e) => {
     e.preventDefault();
+    postUser(input.newUsername, input.newPassword, input.email)
+      .then((json) => {
+        localStorage.setItem("token", json.jwt);
+        history.push("/build");
+      })
+      .catch((error) => {
+        console.log(error);
+        setSignUpErr("invalid signup");
+      });
   };
 
   return (
@@ -27,37 +47,18 @@ const Welcome = () => {
         <Login
           username={input.username}
           password={input.password}
+          error={loginErr}
           handleInputChange={handleInputChange}
           handleLogin={handleLogin}
         />
-        <h1>Sign Up</h1>
-        <form>
-          <label htmlFor="newUsername">Username: </label>
-          <input
-            type="text"
-            name="newUsername"
-            value={input.newUsername}
-            onChange={handleInputChange}
-          />
-          <br />
-          <label htmlFor="email">Email: </label>
-          <input
-            type="text"
-            name="email"
-            value={input.email}
-            onChange={handleInputChange}
-          />
-          <br />
-          <label htmlFor="newPassword">Password: </label>
-          <input
-            type="password"
-            name="newPassword"
-            value={input.newPassword}
-            onChange={handleInputChange}
-          />
-          <br />
-          <button onClick={handleSignUp}>Sign Up</button>
-        </form>
+        <SignUp
+          newUsername={input.newUsername}
+          newPassword={input.newPassword}
+          email={input.email}
+          error={signUpErr}
+          handleInputChange={handleInputChange}
+          handleSignUp={handleSignUp}
+        />
       </div>
     </div>
   );

@@ -46,7 +46,7 @@ class Build extends React.Component {
 
   componentDidMount() {
     const themeId = this.props.match.params.id;
-    themeId ? this.setTheme(themeId) : this.setTheme("83");
+    themeId ? this.setTheme(themeId) : this.setTheme("1");
   }
 
   setTheme = (id) => {

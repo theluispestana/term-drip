@@ -1,5 +1,6 @@
 // // urls
 const baseURL = "http://localhost:3000";
+const userURL = `${baseURL}/users/`;
 const loginURL = `${baseURL}/login/`;
 const themeURL = `${baseURL}/themes/`;
 
@@ -16,7 +17,12 @@ const headersWithAuth = {
 };
 
 // parse incoming data
-const parseData = (response) => response.json();
+const parseData = (response) => {
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return response.json();
+};
 // error handler
 const catchError = (error) => console.log(`%c${error}`, "color: red;");
 
@@ -26,9 +32,17 @@ export const loginUser = (username, password) =>
     method: "POST",
     headers: headers,
     body: JSON.stringify({ user: { username: username, password: password } }),
-  })
-    .then(parseData)
-    .catch(catchError);
+  }).then(parseData);
+// .catch(catchError);
+
+export const postUser = (username, password, email) =>
+  fetch(userURL, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({
+      user: { username: username, password: password, email: email },
+    }),
+  }).then(parseData);
 
 // fetch all themes, returns promise
 export const fetchThemes = () =>
