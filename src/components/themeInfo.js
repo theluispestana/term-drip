@@ -1,5 +1,6 @@
 import React from "react";
 import Preview from "containers/preview";
+import { postTheme } from "helpers/requests";
 
 const ThemeInfo = (props) => {
   const {
@@ -12,7 +13,9 @@ const ThemeInfo = (props) => {
     promptCode,
   } = props;
 
-  const handleSave = () => {};
+  const handleSave = () => {
+    postTheme(fileName, colors, promptItems);
+  };
 
   return (
     <div>
