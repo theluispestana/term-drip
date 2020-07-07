@@ -11,7 +11,8 @@ const PromptCheckbox = (props) => {
     handlePromptInputs,
     handleCheckbox,
   } = props;
-  const promptItem = promptItems.slice(-1)[0];
+  const promptItem = promptItems.find((item) => item.type === name);
+  // console.log(promptItem);
   return (
     <>
       <Checkbox

@@ -17,7 +17,7 @@ const ColorInput = (props) => {
   const styles = reactCSS({
     default: {
       color: {
-        width: "36px",
+        width: "100%",
         height: "14px",
         borderRadius: "2px",
         background: `${value}`,
@@ -46,14 +46,16 @@ const ColorInput = (props) => {
 
   return (
     <>
-      <label htmlFor={name}>{label}</label>
+      {/* {<label htmlFor={name}>{label}</label>} */}
+
       <div>
         <div style={styles.swatch} onClick={handleClick}>
+          {label}
           <div style={styles.color} />
         </div>
         {showColorPicker ? (
           <div style={styles.popover}>
-            <div style={styles.cover} onClick={handleClose} />
+            <div style={styles.cover} onClick={handleClick} />
             <SketchPicker
               color={value}
               onChange={(color) => handleChange(color, name)}
