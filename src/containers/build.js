@@ -104,6 +104,7 @@ class Build extends React.Component {
       ...this.state.promptItems,
     ]);
     this.setState({ promptItems });
+    // console.log("promptItems after colorchange: ", this.state.promptItems);
   };
 
   handleSubmit = (e) => {

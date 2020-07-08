@@ -4,8 +4,16 @@ export const parsePromptItems = (promptItems) => {
   promptItems.forEach((item) => {
     if (item.type === "username") {
       prompt += createZSHString(item, "%n");
+    } else if (item.type === "hostname") {
+      prompt += createZSHString(item, "%m");
+    } else if (item.type === "workingDirectory") {
+      prompt += createZSHString(item, "%d");
     } else if (item.type === "date") {
       prompt += createZSHString(item, "%W");
+    } else if (item.type === "dayDD") {
+      prompt += createZSHString(item, "%w");
+    } else if (item.type === "militaryTime") {
+      prompt += createZSHString(item, "%T");
     } else if (item.type === "time") {
       prompt += createZSHString(item, "%t");
     }
@@ -30,10 +38,30 @@ export const createPromptPreview = (promptItems) => {
         style: { color: item.foreground, backgroundColor: item.background },
         text: "Username ",
       });
+    } else if (item.type === "hostname") {
+      prompt.push({
+        style: { color: item.foreground, backgroundColor: item.background },
+        text: "host ",
+      });
+    } else if (item.type === "workingDirectory") {
+      prompt.push({
+        style: { color: item.foreground, backgroundColor: item.background },
+        text: "/Users/Name/Documents ",
+      });
     } else if (item.type === "date") {
       prompt.push({
         style: { color: item.foreground, backgroundColor: item.background },
         text: "06/30/20 ",
+      });
+    } else if (item.type === "dayDD") {
+      prompt.push({
+        style: { color: item.foreground, backgroundColor: item.background },
+        text: "Fri 13 ",
+      });
+    } else if (item.type === "militaryTime") {
+      prompt.push({
+        style: { color: item.foreground, backgroundColor: item.background },
+        text: "20:39 ",
       });
     } else if (item.type === "time") {
       prompt.push({

@@ -14,7 +14,7 @@ const PromptCheckbox = (props) => {
   const promptItem = promptItems.find((item) => item.type === name);
   // console.log(promptItem);
   return (
-    <>
+    <div>
       <Checkbox
         name={name}
         label={label}
@@ -38,7 +38,7 @@ const PromptCheckbox = (props) => {
           />
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 

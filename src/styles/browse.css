@@ -1,3 +1,7 @@
+/* #browse-container { */
+/*   margin-top: 100px; */
+/* } */
+
 #browse {
   height: 100%;
   /* display: grid; */
@@ -10,6 +14,11 @@
 }
 
 #preview-container {
-  margin: auto;
+  margin: 1em auto;
   width: 300px; 
+}
+
+#filter-options {
+  text-align: center;
+  margin: 2em auto;
 }
