@@ -17,7 +17,7 @@ const ColorInput = (props) => {
   const styles = reactCSS({
     default: {
       color: {
-        width: "100%",
+        minWidth: "120px",
         height: "14px",
         borderRadius: "2px",
         background: `${value}`,
@@ -47,8 +47,7 @@ const ColorInput = (props) => {
   return (
     <>
       {/* {<label htmlFor={name}>{label}</label>} */}
-
-      <div>
+      <div id="color-input">
         <div style={styles.swatch} onClick={handleClick}>
           {label}
           <div style={styles.color} />

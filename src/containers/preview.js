@@ -6,8 +6,7 @@ import "styles/preview.css";
 const Preview = (props) => {
   const { colors, promptItems } = props;
   return (
-    <div>
-      <p>Preview</p>
+    <>
       <div
         className="preview"
         style={{ backgroundColor: colors["background"] }}
@@ -21,7 +20,7 @@ const Preview = (props) => {
         </div>
         <PromptPreview colors={colors} promptItems={promptItems} />
       </div>
-    </div>
+    </>
   );
 };
 

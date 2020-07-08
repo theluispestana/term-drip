@@ -1,0 +1,11 @@
+#terminal-container {
+  min-height: 350px;
+  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: 1fr 1fr 1fr 1fr */
+  /* grid-gap: 1em; */
+  /* flex-flow: column wrap; */
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+}

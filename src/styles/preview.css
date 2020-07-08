@@ -1,6 +1,21 @@
+#preview-container {
+  width: 300px;
+  text-align: center;
+}
+
+#preview-container * {
+  /* text-align: center; */
+  margin: 0 auto;
+}
+
+#preview-container input {
+  width: 100%;
+}
+
 .preview {
   width: 300px;
   height: 150px;
+  text-align: left;
 }
 
 .color-container {

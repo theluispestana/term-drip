@@ -18,26 +18,31 @@ const ThemeInfo = (props) => {
   };
 
   return (
-    <div>
-      <label htmlFor="fileName">Name this theme: </label>
-      <input
-        type="text"
-        name="fileName"
-        value={fileName}
-        onChange={handleInputChange}
-      />
-      <button onClick={handleSave}>Save Theme</button>
+    <div id="preview-container">
+      <div id="save-theme">
+        <input
+          type="text"
+          name="fileName"
+          value={fileName}
+          placeholder="Name this theme"
+          onChange={handleInputChange}
+        />
+        <button onClick={handleSave}>Save Theme</button>
+      </div>
       <br />
       <Preview colors={colors} promptItems={promptItems} />
-      <label htmlFor="prompt">Add this to your ZSH file: </label>
-      <input type="text" name="prompt" readOnly value={promptCode} />
-      <br />
-      <button onClick={handleSubmit}>Compile Theme</button>
-      {fileURL ? (
-        <a href={fileURL} download={`${fileName}.itermcolors`}>
-          Download
-        </a>
-      ) : null}
+      <div id="download">
+        <label htmlFor="prompt">Add this to your ZSH file: </label>
+        <input type="text" name="prompt" readOnly value={promptCode} />
+        <br />
+        <button onClick={handleSubmit}>Compile Theme</button>
+        <br />
+        {fileURL ? (
+          <a href={fileURL} download={`${fileName}.itermcolors`}>
+            Download
+          </a>
+        ) : null}
+      </div>
     </div>
   );
 };
