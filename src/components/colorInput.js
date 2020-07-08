@@ -10,9 +10,9 @@ const ColorInput = (props) => {
     setShowColorPicker(!showColorPicker);
   };
 
-  const handleClose = () => {
-    setShowColorPicker(false);
-  };
+  // const handleClose = () => {
+  //   setShowColorPicker(false);
+  // };
 
   const styles = reactCSS({
     default: {

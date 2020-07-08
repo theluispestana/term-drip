@@ -19,12 +19,11 @@ class Browse extends React.Component {
     return (
       <div id="browse">
         {this.state.themes.map((theme) => (
-          <div id="preview-container">
+          <div key={theme.theme.id} id="preview-container">
             <Link to={`/build/${theme.theme.id}`}>
               <h1>{theme.theme.name}</h1>
             </Link>
             <Preview
-              key={theme.theme.id}
               colors={createColorObj(theme.terminal_colorscheme.colors)}
               promptItems={createPromptItemArr(theme.prompt_items)}
             />

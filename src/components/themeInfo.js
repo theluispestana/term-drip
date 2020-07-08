@@ -1,17 +1,21 @@
 import React from "react";
 import Preview from "containers/preview";
 import { postTheme } from "helpers/requests";
+import FileSelect from "./fileSelect";
 
 const ThemeInfo = (props) => {
   const {
     fileName,
     fileURL,
     colors,
+    promptCode,
     promptItems,
     handleInputChange,
     handleSubmit,
-    promptCode,
+    handleFileSelectChange,
+    fileSelect,
   } = props;
+  const fileExtension = fileSelect ? fileSelect.split("-")[1] : "";
 
   const handleSave = () => {
     postTheme(fileName, colors, promptItems);
@@ -35,10 +39,14 @@ const ThemeInfo = (props) => {
         <label htmlFor="prompt">Add this to your ZSH file: </label>
         <input type="text" name="prompt" readOnly value={promptCode} />
         <br />
+        <FileSelect
+          value={fileSelect}
+          handleFileSelectChange={handleFileSelectChange}
+        />
         <button onClick={handleSubmit}>Compile Theme</button>
         <br />
         {fileURL ? (
-          <a href={fileURL} download={`${fileName}.itermcolors`}>
+          <a href={fileURL} download={`${fileName}.${fileExtension}`}>
             Download
           </a>
         ) : null}

@@ -108,16 +108,23 @@ class Build extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const format = "iterm";
-    // const iterm = themeHelper.createTheme(props.colors, format);
-    // const URL = themeHelper.createFile(iterm);
-    const fileURL = createThemeAndFile(this.state.colors, format);
-    this.setState({ fileURL });
+    if (this.state.fileSelect) {
+      const format = this.state.fileSelect.split("-")[0];
+      const fileURL = createThemeAndFile(this.state.colors, format);
+      this.setState({ fileURL });
+    }
   };
 
   handleBoolean = (e) => {
     const target = e.target;
     this.setState({ [target.name]: !this.state[target.name] });
+  };
+
+  handleFileSelectChange = (e) => {
+    const value = e.target.value;
+    console.log("value: ", value);
+    console.log("entire event", e);
+    this.setState({ fileSelect: value });
   };
 
   render() {
@@ -128,6 +135,7 @@ class Build extends React.Component {
       checkboxes,
       promptItems,
       renderThemeInputs,
+      fileSelect,
     } = this.state;
     return (
       <div id="build-container">
@@ -155,11 +163,13 @@ class Build extends React.Component {
           <ThemeInfo
             fileName={fileName}
             fileURL={fileURL}
+            fileSelect={fileSelect}
             colors={colors}
             promptItems={promptItems}
             promptCode={parsePromptItems(promptItems)}
             handleInputChange={this.handleInputChange}
             handleSubmit={this.handleSubmit}
+            handleFileSelectChange={this.handleFileSelectChange}
           />
         </div>
       </div>

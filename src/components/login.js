@@ -11,7 +11,7 @@ const Login = (props) => {
         <input
           type="text"
           name="username"
-          value={username}
+          value={username || ""}
           onChange={handleInputChange}
         />
         <br />
@@ -19,7 +19,7 @@ const Login = (props) => {
         <input
           type="password"
           name="password"
-          value={password}
+          value={password || ""}
           onChange={handleInputChange}
         />
         <br />
