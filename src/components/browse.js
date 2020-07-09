@@ -30,10 +30,11 @@ class Browse extends React.Component {
     return (
       <div id="browse-container">
         <div id="filter-options">
-          <label htmlFor="search">Search:</label>
+          {/* <label htmlFor="search">Search:</label> */}
           <input
             name="search"
             value={this.state.search}
+            placeholder={"Search Themes"}
             onChange={this.handleChange}
           />
         </div>

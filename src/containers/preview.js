@@ -11,6 +11,9 @@ const Preview = (props) => {
         className="preview"
         style={{ backgroundColor: colors["background"] }}
       >
+        <div id="tool-bar">
+          <span></span>
+        </div>
         <div className="color-container">
           {Object.keys(colors).map((key, index) =>
             Number(key) + 1 ? (

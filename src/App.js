@@ -9,6 +9,7 @@ import Build from "containers/build";
 import Browse from "components/browse";
 import Welcome from "containers/welcome";
 import NavBar from "components/navBar";
+import "styles/app.css";
 
 class App extends React.Component {
   render() {

@@ -7,19 +7,21 @@ const Login = (props) => {
       <h1>Login In</h1>
       {error ? <p style={{ color: "red" }}>{error}</p> : null}
       <form>
-        <label htmlFor="username">Username: </label>
+        {/* <label htmlFor="username">Username: </label> */}
         <input
           type="text"
           name="username"
           value={username || ""}
+          placeholder="Username"
           onChange={handleInputChange}
         />
         <br />
-        <label htmlFor="password">Password: </label>
+        {/* <label htmlFor="password">Password: </label> */}
         <input
           type="password"
           name="password"
           value={password || ""}
+          placeholder="Password"
           onChange={handleInputChange}
         />
         <br />

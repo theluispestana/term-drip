@@ -6,7 +6,7 @@ const Prompt = (props) => {
   const { handleCheckbox, handlePromptInputs, checkboxes, promptItems } = props;
   return (
     <div>
-      <h1>Create A Prompt</h1>
+      <h1>Prompt Options</h1>
       <div id="prompt-options">
         <PromptCheckbox
           name="username"

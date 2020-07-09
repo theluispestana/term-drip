@@ -15,27 +15,30 @@ const SignUp = (props) => {
       <h1>Sign Up</h1>
       {error ? <p style={{ color: "red" }}>{error}</p> : null}
       <form>
-        <label htmlFor="newUsername">Username: </label>
+        {/*<label htmlFor="newUsername">Username: </label>*/}
         <input
           type="text"
           name="newUsername"
           value={newUsername}
+          placeholder="Username"
           onChange={handleInputChange}
         />
         <br />
-        <label htmlFor="email">Email: </label>
+        {/* <label htmlFor="email">Email: </label> */}
         <input
           type="text"
           name="email"
           value={email}
+          placeholder="Email"
           onChange={handleInputChange}
         />
         <br />
-        <label htmlFor="newPassword">Password: </label>
+        {/* <label htmlFor="newPassword">Password: </label> */}
         <input
           type="password"
           name="newPassword"
           value={newPassword}
+          placeholder="Password"
           onChange={handleInputChange}
         />
         <br />
