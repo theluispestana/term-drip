@@ -1,5 +1,5 @@
 // // urls
-const baseURL = "http://localhost:3000";
+const baseURL = "https://terminal-drip.herokuapp.com/";
 const userURL = `${baseURL}/users/`;
 const loginURL = `${baseURL}/login/`;
 const themeURL = `${baseURL}/themes/`;
@@ -19,7 +19,7 @@ const headersWithAuth = {
 // parse incoming data
 const parseData = (response) => {
   if (!response.ok) {
-    throw new Error(response.statusText);
+    throw new Error(response.status);
   }
   return response.json();
 };
@@ -54,8 +54,7 @@ export const fetchTheme = (id) =>
     .then(parseData)
     .catch(catchError);
 
-export const postTheme = (name, terminalColors, promptItems) => {
-  console.log(localStorage.getItem("token"));
+export const postTheme = (name, terminalColors, promptItems) =>
   fetch(themeURL, {
     method: "POST",
     headers: headersWithAuth,
@@ -66,7 +65,5 @@ export const postTheme = (name, terminalColors, promptItems) => {
         prompt: promptItems,
       },
     }),
-  })
-    .then(parseData)
-    .catch(catchError);
-};
+  }).then(parseData);
+// .catch(catchError);
