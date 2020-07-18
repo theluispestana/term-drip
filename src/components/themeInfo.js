@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Preview from "containers/preview";
 import { postTheme } from "helpers/requests";
 import FileSelect from "./fileSelect";
@@ -16,14 +16,32 @@ const ThemeInfo = (props) => {
     fileSelect,
   } = props;
   const fileExtension = fileSelect ? fileSelect.split("-")[1] : "";
+  const [saveError, setSaveError] = useState("");
+  const [saveSuccess, setSaveSuccess] = useState("");
 
   const handleSave = () => {
-    postTheme(fileName, colors, promptItems);
+    postTheme(fileName, colors, promptItems)
+      .then((json) => {
+        setSaveError("");
+        setSaveSuccess("save successful");
+      })
+      .catch((error) => {
+        if (error.message === "401") {
+          setSaveError("login to save a theme");
+        } else if (error.message === "406") {
+          setSaveError("invalid name");
+        }
+        setSaveSuccess("");
+      });
   };
 
   return (
     <div id="preview-container">
       <div id="save-theme">
+        {saveError ? <span style={{ color: "red" }}>{saveError}</span> : null}
+        {saveSuccess ? (
+          <span style={{ color: "blue" }}>{saveSuccess}</span>
+        ) : null}
         <input
           type="text"
           name="fileName"

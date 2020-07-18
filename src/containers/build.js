@@ -23,30 +23,30 @@ class Build extends React.Component {
     },
     promptItems: [],
     colors: {
-      background: "",
-      foreground: "",
-      0: "",
-      1: "",
-      2: "",
-      3: "",
-      4: "",
-      5: "",
-      6: "",
-      7: "",
-      8: "",
-      9: "",
-      10: "",
-      11: "",
-      12: "",
-      13: "",
-      14: "",
-      15: "",
+      background: "#272822",
+      foreground: "#F1EBEB",
+      0: "#48483E",
+      1: "#DC2566",
+      2: "#8FC029",
+      3: "#D4C96E",
+      4: "#55BCCE",
+      5: "#9358FE",
+      6: "#56B7A5",
+      7: "#ACADA1",
+      8: "#76715E",
+      9: "#FA2772",
+      10: "#A7E22E",
+      11: "#E7DB75",
+      12: "#66D9EE",
+      13: "#AE82FF",
+      14: "#66EFD5",
+      15: "#CFD0C2",
     },
   };
 
   componentDidMount() {
     const themeId = this.props.match.params.id;
-    themeId ? this.setTheme(themeId) : this.setTheme("1");
+    if (themeId) this.setTheme(themeId);
   }
 
   setTheme = (id) => {
