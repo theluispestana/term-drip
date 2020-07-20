@@ -1,5 +1,5 @@
 // // urls
-const baseURL = "http://localhost:3000";
+const baseURL = "https://terminal-drip.herokuapp.com/";
 const userURL = `${baseURL}/users/`;
 const loginURL = `${baseURL}/login/`;
 const themeURL = `${baseURL}/themes/`;
