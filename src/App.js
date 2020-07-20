@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Route,
-  // Redirect,
   Switch,
+  HashRouter,
 } from "react-router-dom";
 import Build from "containers/build";
 import Browse from "components/browse";
@@ -14,7 +14,7 @@ import "styles/app.css";
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <HashRouter basename="/term-drip">
         <NavBar />
         <Switch>
           <Route exact path="/" component={Welcome} />
@@ -23,7 +23,7 @@ class App extends React.Component {
           <Route path="/build" component={Build} />
           <Route path="*" component={Welcome} />
         </Switch>
-      </Router>
+      </HashRouter>
     );
   }
 }
