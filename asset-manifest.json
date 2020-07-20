@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/term-drip/static/css/main.c5d71fb3.chunk.css",
-    "main.js": "/term-drip/static/js/main.591b4fbc.chunk.js",
-    "main.js.map": "/term-drip/static/js/main.591b4fbc.chunk.js.map",
+    "main.js": "/term-drip/static/js/main.9e52c43f.chunk.js",
+    "main.js.map": "/term-drip/static/js/main.9e52c43f.chunk.js.map",
     "runtime-main.js": "/term-drip/static/js/runtime-main.2a931dea.js",
     "runtime-main.js.map": "/term-drip/static/js/runtime-main.2a931dea.js.map",
     "static/js/2.dbe884f1.chunk.js": "/term-drip/static/js/2.dbe884f1.chunk.js",
     "static/js/2.dbe884f1.chunk.js.map": "/term-drip/static/js/2.dbe884f1.chunk.js.map",
     "index.html": "/term-drip/index.html",
-    "precache-manifest.6d9eb974188b4959e7ce0e94892e8224.js": "/term-drip/precache-manifest.6d9eb974188b4959e7ce0e94892e8224.js",
+    "precache-manifest.f44fe12472ad86ce7fb1ed1ae12ca812.js": "/term-drip/precache-manifest.f44fe12472ad86ce7fb1ed1ae12ca812.js",
     "service-worker.js": "/term-drip/service-worker.js",
     "static/css/main.c5d71fb3.chunk.css.map": "/term-drip/static/css/main.c5d71fb3.chunk.css.map",
     "static/js/2.dbe884f1.chunk.js.LICENSE.txt": "/term-drip/static/js/2.dbe884f1.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.2a931dea.js",
     "static/js/2.dbe884f1.chunk.js",
     "static/css/main.c5d71fb3.chunk.css",
-    "static/js/main.591b4fbc.chunk.js"
+    "static/js/main.9e52c43f.chunk.js"
   ]
 }
